@@ -5,15 +5,11 @@ const { compilerOptions } = require('vue-template-compiler')
 module.exports = {
   mode: 'development',
   entry: './src/main.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
-  },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      '@': path.resolve(__dirname, 'src')
+      '@': path.resolve(__dirname, '../src')
     }
   },
   module: {
@@ -36,13 +32,38 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['vue-style-loader', 'css-loader']
-      }
+      },
+      {
+        test: /\.(jpe?g|png|svg|gif)/i,
+        type: "asset",
+        generator: {
+          filename: "images/[name]-[contenthash:7][ext]", // 局部指定输出位置， 防止缓存问题
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024, // 8kb  大于 8kb，asset 选择用 asset/resource 处理它； 小于 8kb，asset 选择用 asset/inline 处理它。
+          },
+        },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: "asset",
+        generator: {
+          filename: "fonts/[name]-[contenthash:7][ext]", // 局部指定输出位置， 防止缓存问题
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 8 * 1024, // 8kb  大于 8kb，asset 选择用 asset/resource 处理它； 小于 8kb，asset 选择用 asset/inline 处理它。
+          },
+        },
+      },
     ]
   },
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      template: './public/index.html'
+      template: path.resolve(__dirname, '../public/index.html'),
+      title: "webpack5-vue2-stater"
     })
   ],
   devServer: {
