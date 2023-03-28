@@ -35,18 +35,6 @@
   },
   "rules": {
     "no-console": "off",
-    "prettier/prettier": "error",
-    "import/extensions": [
-      "error",
-      "always",
-      {
-        "js": "never",
-        "mjs": "never",
-        "jsx": "never",
-        "ts": "never",
-        "tsx": "never",
-        "vue": "never"
-      }
-    ]
+    "prettier/prettier": "error"
   }
 }

@@ -1,12 +1,12 @@
-const baseConfig = require("./webpack.base");
-const { merge } = require("webpack-merge");
-const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const threadLoader = require("thread-loader");
-const TerserPlugin = require("terser-webpack-plugin");
-const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
-const HtmlMinimizerPlugin = require("html-minimizer-webpack-plugin");
+const { merge } = require('webpack-merge');
+const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const threadLoader = require('thread-loader');
+const TerserPlugin = require('terser-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin');
+const baseConfig = require('./webpack.base');
 // 并行构建
 threadLoader.warmup(
   {
@@ -15,22 +15,22 @@ threadLoader.warmup(
   },
   [
     // 子进程中需要预加载的 node 模块
-    "css-loader",
-    "postcss-loader",
-    "less-loader",
-  ]
+    'css-loader',
+    'postcss-loader',
+    'less-loader',
+  ],
 );
 const prodConfig = {
-  mode: "production",
+  mode: 'production',
   output: {
-    filename: "js/[name]-[contenthash:7].js",
-    path: path.resolve(__dirname, "../dist"),
+    filename: 'js/[name]-[contenthash:7].js',
+    path: path.resolve(__dirname, '../dist'),
   },
-  devtool: "source-map",
+  devtool: 'source-map',
   optimization: {
     minimize: true, // 代码压缩和混淆
     minimizer: [
-      "...",
+      '...',
       new TerserPlugin({
         terserOptions: {
           ecma: 6, // ECMAScript 版本
@@ -38,8 +38,8 @@ const prodConfig = {
             drop_console: true, // 删除console
           },
           output: {
-            comments: false, //删除掉代码中所有注释
-            beautify: false, //不必要的空格
+            comments: false, // 删除掉代码中所有注释
+            beautify: false, // 不必要的空格
           },
         },
       }),
@@ -47,8 +47,8 @@ const prodConfig = {
       new HtmlMinimizerPlugin(),
     ],
     splitChunks: {
-      chunks: "all",
-      name: 'vendor'
+      chunks: 'all',
+      name: 'vendor',
     },
     usedExports: true,
   },
@@ -56,35 +56,32 @@ const prodConfig = {
     rules: [
       {
         test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.less$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               importLoaders: 1,
             },
           },
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader',
             options: {
               postcssOptions: {
-                plugins: [require("autoprefixer")],
+                plugins: [require('autoprefixer')],
               },
             },
           },
-          "less-loader",
+          'less-loader',
         ],
       },
     ],
   },
-  plugins: [
-    new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin({ filename: "[name]-[contenthash].css" }),
-  ],
+  plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' })],
 };
 
 module.exports = merge(prodConfig, baseConfig);

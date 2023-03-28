@@ -7,7 +7,7 @@
     "serve": "cross-env NODE_ENV=development BASE_ENV=development webpack serve --config ./build/webpack.dev.js",
     "serve:prod": "cross-env NODE_ENV=development BASE_ENV=development webpack serve --config ./build/webpack.dev.js",
     "build:test": "cross-env NODE_ENV=production BASE_ENV=production webpack --config ./build/webpack.prod.js",
-    "build:prod": "cross-env NODE_ENV=production BASE_ENV=production webpack --config ./build/webpack.prod.js",
+    "build": "cross-env NODE_ENV=production BASE_ENV=production webpack --config ./build/webpack.prod.js",
     "analy": "cross-env NODE_ENV=production BASE_ENV=production webpack --config ./build/webpack.analy.js"
   },
   "keywords": [],

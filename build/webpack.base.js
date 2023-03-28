@@ -1,9 +1,10 @@
-const path = require('path')
-const webpack = require('webpack')
-const {VueLoaderPlugin} = require('vue-loader')
+const path = require('path');
+const webpack = require('webpack');
+const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { compilerOptions } = require('vue-template-compiler')
+const { compilerOptions } = require('vue-template-compiler');
 const ESLintPlugin = require('eslint-webpack-plugin');
+
 module.exports = {
   mode: 'development',
   entry: './src/main.js',
@@ -20,29 +21,29 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        include: path.resolve('../src'),
+        // include: path.resolve('../src'),
         options: {
           compilerOptions: {
             ...compilerOptions,
-            preserveWhitespace: false
-          }
-        }
+            preserveWhitespace: false,
+          },
+        },
       },
       {
         test: /\.js$/,
         include: path.resolve('../src'),
         loader: 'babel-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        use: ['vue-style-loader', 'css-loader']
+        use: ['vue-style-loader', 'css-loader'],
       },
       {
         test: /\.(jpe?g|png|svg|gif)/i,
-        type: "asset",
+        type: 'asset',
         generator: {
-          filename: "images/[name]-[contenthash:7][ext]", // 局部指定输出位置， 防止缓存问题
+          filename: 'images/[name]-[contenthash:7][ext]', // 局部指定输出位置， 防止缓存问题
         },
         parser: {
           dataUrlCondition: {
@@ -52,9 +53,9 @@ module.exports = {
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: "asset",
+        type: 'asset',
         generator: {
-          filename: "fonts/[name]-[contenthash:7][ext]", // 局部指定输出位置， 防止缓存问题
+          filename: 'fonts/[name]-[contenthash:7][ext]', // 局部指定输出位置， 防止缓存问题
         },
         parser: {
           dataUrlCondition: {
@@ -62,22 +63,22 @@ module.exports = {
           },
         },
       },
-    ]
+    ],
   },
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'),
-      title: "webpack5-vue2-stater"
+      title: 'webpack5-vue2-stater',
     }),
     new webpack.DefinePlugin({
-      'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV)
+      'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV),
     }),
     new ESLintPlugin(),
   ],
   devServer: {
     hot: true,
     open: true,
-    port: "9527",
+    port: '9527',
   },
-}
+};
