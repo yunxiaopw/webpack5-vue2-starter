@@ -1,6 +1,7 @@
 const { merge } = require('webpack-merge');
 const path = require('path');
 const baseConfig = require('./webpack.base');
+const WebpackBar = require('webpackbar');
 
 const devConfig = {
   mode: 'development',
@@ -50,7 +51,9 @@ const devConfig = {
       },
     ],
   },
-  plugins: [],
+  plugins: [
+    new WebpackBar()
+  ],
 };
 
 module.exports = merge(devConfig, baseConfig);

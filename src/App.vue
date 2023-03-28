@@ -1,5 +1,5 @@
 <template>
-  <div>home</div>
+  <div>home我王薇薇asdaasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdsd a</div>
 </template>
 
 <script>
