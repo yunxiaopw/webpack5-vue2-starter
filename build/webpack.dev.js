@@ -1,6 +1,5 @@
 const baseConfig = require("./webpack.base");
 const { merge } = require("webpack-merge");
-const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const path = require("path");
 
 const devConfig = {
@@ -14,7 +13,7 @@ const devConfig = {
     open: true,
     port: "9527",
   },
-  devtool: "eval",
+  devtool: "eval-source-map",
   experiments: {
     lazyCompilation: true,
   },
@@ -52,11 +51,7 @@ const devConfig = {
     ],
   },
   plugins: [
-    new FriendlyErrorsWebpackPlugin({
-      compilationSuccessInfo: {
-        messages: ["You application is running here http://localhost:9527"],
-      },
-    }),
+
   ],
 };
 

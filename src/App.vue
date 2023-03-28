@@ -5,12 +5,10 @@
 <script>
 export default {
   methods: {
-    handle3d() {
-
-    }
+    handle3d() {},
   },
   mounted() {
-    this.handle3d()
-  }
-}
+    this.handle3d();
+  },
+};
 </script>

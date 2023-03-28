@@ -1,22 +1,26 @@
 const path = require('path')
+const webpack = require('webpack')
 const {VueLoaderPlugin} = require('vue-loader')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { compilerOptions } = require('vue-template-compiler')
+const ESLintPlugin = require('eslint-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: './src/main.js',
+  target: 'web',
   resolve: {
-    extensions: ['.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json', '.css'],
     alias: {
-      'vue$': 'vue/dist/vue.esm.js',
-      '@': path.resolve(__dirname, '../src')
-    }
+      vue$: 'vue/dist/vue.esm.js',
+      '@': path.resolve(__dirname, '../src'),
+    },
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        include: path.resolve('../src'),
         options: {
           compilerOptions: {
             ...compilerOptions,
@@ -26,6 +30,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
+        include: path.resolve('../src'),
         loader: 'babel-loader',
         exclude: /node_modules/
       },
@@ -68,6 +73,7 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV)
     }),
+    new ESLintPlugin(),
   ],
   devServer: {
     hot: true,
