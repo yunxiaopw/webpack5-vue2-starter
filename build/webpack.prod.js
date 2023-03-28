@@ -25,6 +25,7 @@ const prodConfig = {
   output: {
     filename: 'js/[name]-[contenthash:7].js',
     path: path.resolve(__dirname, '../dist'),
+    publicPath: './',
   },
   devtool: 'source-map',
   optimization: {
@@ -47,8 +48,7 @@ const prodConfig = {
       new HtmlMinimizerPlugin(),
     ],
     splitChunks: {
-      chunks: 'all',
-      name: 'vendor',
+      chunks: 'all'
     },
     usedExports: true,
   },
@@ -81,7 +81,7 @@ const prodConfig = {
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: '[name]-[contenthash].css' })],
+  plugins: [new CleanWebpackPlugin(), new MiniCssExtractPlugin({ filename: '[name]-[contenthash:7].css' })],
 };
 
 module.exports = merge(prodConfig, baseConfig);

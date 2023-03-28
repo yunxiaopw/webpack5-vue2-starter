@@ -1,5 +1,5 @@
 <template>
-  <router-view> </router-view>
+  <div>这是home</div>
 </template>
 
 <script>
@@ -7,7 +7,6 @@ export default {
   data() {
     return {};
   },
-  methods: {},
   mounted() {},
 };
 </script>

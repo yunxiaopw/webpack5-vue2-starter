@@ -36,6 +36,7 @@ specifiers:
   thread-loader: ^3.0.4
   vue: ^2.6.14
   vue-loader: ^15.9.8
+  vue-router: 3.6.5
   vue-style-loader: ^4.1.3
   vue-template-compiler: ^2.6.14
   webpack: ^5.76.1
@@ -47,6 +48,7 @@ specifiers:
 
 dependencies:
   vue: 2.7.14
+  vue-router: 3.6.5
 
 devDependencies:
   '@babel/cli': 7.21.0_@babel+core@7.21.3
@@ -6309,6 +6311,10 @@ packages:
       - walrus
       - whiskers
     dev: true
+
+  /vue-router/3.6.5:
+    resolution: {integrity: sha512-VYXZQLtjuvKxxcshuRAwjHnciqZVoXAjTjcqBTz4rKc8qih9g9pI3hbDjmqXaHdgL3v8pV6P8Z335XvHzESxLQ==}
+    dev: false
 
   /vue-style-loader/4.1.3:
     resolution: {integrity: sha512-sFuh0xfbtpRlKfm39ss/ikqs9AbKCoXZBpHeVZ8Tx650o0k0q/YCM7FRvigtxpACezfq6af+a7JeqVTWvncqDg==}
