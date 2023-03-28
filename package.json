@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "webpack serve --config ./build/webpack.dev.js",
-    "build:dev": "webpack --config ./build/webpack.prod.js"
+    "serve": "cross-env NODE_ENV=development BASE_ENV=development webpack serve --config ./build/webpack.dev.js",
+    "serve:prod": "cross-env NODE_ENV=development BASE_ENV=development webpack serve --config ./build/webpack.dev.js",
+    "build:test": "cross-env NODE_ENV=production BASE_ENV=production webpack --config ./build/webpack.prod.js",
+    "build:prod": "cross-env NODE_ENV=production BASE_ENV=production webpack --config ./build/webpack.prod.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +19,8 @@
     "autoprefixer": "^10.4.14",
     "babel-loader": "^9.1.2",
     "clean-webpack-plugin": "^4.0.0",
+    "core-js": "^3.29.1",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "friendly-errors-webpack-plugin": "^1.7.0",

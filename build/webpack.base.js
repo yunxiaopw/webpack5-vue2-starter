@@ -64,7 +64,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../public/index.html'),
       title: "webpack5-vue2-stater"
-    })
+    }),
+    new webpack.DefinePlugin({
+      'process.env.BASE_ENV': JSON.stringify(process.env.BASE_ENV)
+    }),
   ],
   devServer: {
     hot: true,

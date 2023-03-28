@@ -7,6 +7,8 @@ specifiers:
   autoprefixer: ^10.4.14
   babel-loader: ^9.1.2
   clean-webpack-plugin: ^4.0.0
+  core-js: ^3.29.1
+  cross-env: ^7.0.3
   css-loader: ^6.7.3
   css-minimizer-webpack-plugin: ^4.2.2
   friendly-errors-webpack-plugin: ^1.7.0
@@ -39,6 +41,8 @@ devDependencies:
   autoprefixer: 10.4.14_postcss@8.4.21
   babel-loader: 9.1.2_uskqpy7onh7hrgnpolkiy3c37i
   clean-webpack-plugin: 4.0.0_webpack@5.76.1
+  core-js: 3.29.1
+  cross-env: 7.0.3
   css-loader: 6.7.3_webpack@5.76.1
   css-minimizer-webpack-plugin: 4.2.2_webpack@5.76.1
   friendly-errors-webpack-plugin: 1.7.0_webpack@5.76.1
@@ -2417,6 +2421,11 @@ packages:
       browserslist: 4.21.5
     dev: true
 
+  /core-js/3.29.1:
+    resolution: {integrity: sha512-+jwgnhg6cQxKYIIjGtAHq2nwUOolo9eoFZ4sHfUH09BLXBgxnH4gA0zEd+t+BO2cNB8idaBtZFcFTRjQJRJmAw==}
+    requiresBuild: true
+    dev: true
+
   /core-util-is/1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
     dev: true
@@ -2429,6 +2438,14 @@ packages:
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
+    dev: true
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
     dev: true
 
   /cross-spawn/7.0.3:
